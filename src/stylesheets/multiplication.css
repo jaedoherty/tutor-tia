@@ -1,0 +1,39 @@
+.game-skeleton {
+    height: 100%;
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.game-header {
+    font-size: 40px;
+    font-weight: 600;
+    color: whitesmoke;
+    padding: 30px;
+}
+
+.game-instructions {
+    color: white;
+}
+
+.matching-board {
+    border: 1px white solid;
+    height: 690px;
+    width: 990px;
+}
+
+.game-button {
+    background-color: darkblue;
+    color: whitesmoke;
+    height: 50px;
+    width: 150px;
+    border-radius: 8px;
+
+}
+
+.game-button:hover {
+    background-color: mediumblue;
+    cursor: pointer;
+}
+
