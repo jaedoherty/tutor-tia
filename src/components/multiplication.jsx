@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const FACTORS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
@@ -22,15 +22,27 @@ const Multiplication = function () {
       return (
         <div className="game-container">
           <div id="factors-container">
-            <div>What times tables would you like to include?</div>
-            <select name="factors" id="factors-table">
-                <option value="1">1</option>
+            <div>Choose factors to include</div>
+            <div id="choose-factors">
+            
                {FACTORS.map(factor => {
-                   return(
-                       <option value={factor}>{factor}</option>
-                   )
+                   return (
+                     <div id="factor">
+                       <input
+                         type="checkbox"
+                         id={`factor${factor}`}
+                         name={`factor${factor}`}
+                         checked
+                       />
+                       <label for={`factor${factor}`}>{factor}</label>
+                       <br></br>
+                     </div>
+                   );
                })} 
-            </select>
+            </div>
+ 
+            
+
           </div>
           <button className="game-button" onClick={startGame}>
             Start the Game!
@@ -49,6 +61,7 @@ const Multiplication = function () {
         Remove them all to see an image at the end!
       </p>
         {createBoard()} 
+        {/* <canvas id="multiplication" height="690" width="990"></canvas> */}
     </div>
   );
 };
