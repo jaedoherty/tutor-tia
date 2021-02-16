@@ -42,9 +42,10 @@
     justify-content: space-evenly;
 }
 
+
 #factors-container {
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: space-evenly; */
     color:  whitesmoke;
 }
 
