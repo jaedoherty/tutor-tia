@@ -26,7 +26,8 @@ const Homepage = function () {
             </div>
           </div>
         </Link>
-        <Link className="game-link">
+        <Link to="/divide"
+        className="game-link">
           <div className="game-tile">
             <div className="game-title">Division Match</div>
             <div className="game-description">

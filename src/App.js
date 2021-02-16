@@ -6,12 +6,14 @@ import React from 'react'
 import { Switch, Route } from "react-router-dom";
 import Homepage from './components/home_page' 
 import Multiplication from './components/multiplication'
+import Division from './components/divison'
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path="/multiply" component={Multiplication}/>
+        <Route exact path="/divide" component={Division}/>
         <Route path="/" component={Homepage} />
       </Switch>
     </div>
