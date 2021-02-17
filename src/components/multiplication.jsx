@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import {Link} from "react-router-dom";
 
 const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
@@ -62,6 +63,7 @@ const Multiplication = function () {
       </p>
         {createBoard()} 
         {/* <canvas id="multiplication" height="690" width="990"></canvas> */}
+        <Link to ="/">Pick a different game!</Link>
     </div>
   );
 };
