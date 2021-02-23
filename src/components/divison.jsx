@@ -10,4 +10,5 @@ const Division = function() {
     );
 }
 
-export default Division;
+export default Division
+;
