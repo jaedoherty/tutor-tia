@@ -10,6 +10,9 @@ const Multiplication = function () {
   function startGame() {
     setPlaying(true);
   }
+  // console.log(factors)
+
+
 
 
   function createBoard() {
@@ -32,9 +35,11 @@ const Multiplication = function () {
                      <div id="factor">
                        <input
                          type="checkbox"
+                         key={factor}
                          id={`factor${factor}`}
                          name={`factor${factor}`}
-                         checked
+                         checked={true}
+                         onChange={chooseFactors(factor)}
                        />
                        <label for={`factor${factor}`}>{factor}</label>
                        <br></br>
@@ -52,6 +57,21 @@ const Multiplication = function () {
           <div className="matching-board">game not started</div>
         </div>
       );
+    }
+  }
+
+
+  function chooseFactors(factor) {
+    let factorEl = document.getElementById(`factor${factor}`);
+    console.log(factorEl);
+    if (factorEl.checked === true) {
+      let newFactors = factors;
+      newFactors.push(factor);
+      setFactors(newFactors);
+    } else {
+      let idx = factors.indexOf(factor);
+      let newFactors = factors.splice(idx, 1);
+      setFactors(newFactors);
     }
   }
 
