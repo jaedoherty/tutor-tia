@@ -6,13 +6,27 @@ const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
-  let [factors, setFactors] = useState(FACTORS);
+  let [factors, setFactors] = useState({checked: false, nums: []});
+  console.log(factors)
   function startGame() {
     setPlaying(true);
   }
-  // console.log(factors)
 
-
+  function chooseAllFactors() {
+    if (factors.checked === true) {
+      setFactors({nums: [], checked: false})
+    } else {
+      setFactors({nums: FACTORS, checked: true})
+    }
+  }
+  function chooseAllButOne() {
+    if (factors.checked === true) {
+      setFactors({ nums: [], checked: false });
+    } else {
+      let newFactors = FACTORS.slice(1)
+      setFactors({nums: newFactors, checked: true})
+    }
+  }
 
 
   function createBoard() {
@@ -38,8 +52,8 @@ const Multiplication = function () {
                          key={factor}
                          id={`factor${factor}`}
                          name={`factor${factor}`}
-                         checked={true}
-                         onChange={chooseFactors(factor)}
+                        //  checked={true}
+                        //  onChange={chooseFactors(factor)}
                        />
                        <label for={`factor${factor}`}>{factor}</label>
                        <br></br>
@@ -48,7 +62,8 @@ const Multiplication = function () {
                })} 
             </div>
  
-            
+               <button className="factor-button" onClick={chooseAllFactors}>Choose All Factors</button>
+               <button className="factor-button" onClick={chooseAllButOne}>Choose All Factors But 1</button>
 
           </div>
           <button className="game-button" onClick={startGame}>
@@ -61,19 +76,19 @@ const Multiplication = function () {
   }
 
 
-  function chooseFactors(factor) {
-    let factorEl = document.getElementById(`factor${factor}`);
-    console.log(factorEl);
-    if (factorEl.checked === true) {
-      let newFactors = factors;
-      newFactors.push(factor);
-      setFactors(newFactors);
-    } else {
-      let idx = factors.indexOf(factor);
-      let newFactors = factors.splice(idx, 1);
-      setFactors(newFactors);
-    }
-  }
+  // function chooseFactors(factor) {
+  //   let factorEl = document.getElementById(`factor${factor}`);
+  //   console.log(factorEl);
+  //   if (factorEl.checked === true) {
+  //     let newFactors = factors;
+  //     newFactors.push(factor);
+  //     setFactors(newFactors);
+  //   } else {
+  //     let idx = factors.indexOf(factor);
+  //     let newFactors = factors.splice(idx, 1);
+  //     setFactors(newFactors);
+  //   }
+  // }
 
   return (
     <div className="game-skeleton">
@@ -84,7 +99,7 @@ const Multiplication = function () {
       </p>
         {createBoard()} 
         {/* <canvas id="multiplication" height="690" width="990"></canvas> */}
-        <Link to ="/">Pick a different game!</Link>
+        <Link to ="/" className="game-button">Pick a different game!</Link>
     </div>
   );
 };
