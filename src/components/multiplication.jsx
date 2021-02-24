@@ -40,7 +40,8 @@ const Multiplication = function () {
       // let allFactors = factors;
       if (Object.values(factors).includes(factor)) {
         let idx = Object.values(factors).indexOf(factor);
-        let newFactors = Object.values(factors).splice(idx)
+        let newFactors = Object.values(factors)
+        newFactors.splice(idx)
         console.log("new", newFactors, idx)
         setFactors(newFactors)
       } else {
