@@ -62,7 +62,19 @@ const Multiplication = function () {
     if (playing === true) {
       return (
         <div className="game-container">
-          <div className="matching-board">board placeholder</div>
+          {/* <div className="matching-board">board placeholder</div> */}
+          <div id="game-board">
+            {
+              // console.log(factors)
+
+              Object.values(factors).map((factor) => {
+                return(
+                  <div id="game-tile">{factor}</div>
+                )
+              } 
+              )
+            }
+          </div>
         </div>
       );
     } else {
@@ -90,28 +102,26 @@ const Multiplication = function () {
                 );
               })}
             </div>
-              <div id="factor-button-container">
-
-            <button className="factor-button" onClick={chooseAllFactors}>
-              Choose All Factors
+            <div id="factor-button-container">
+              <button className="factor-button" onClick={chooseAllFactors}>
+                Choose All Factors
+              </button>
+              <button className="factor-button" onClick={chooseAllButOne}>
+                Choose All Factors But 1
+              </button>
+              <button className="factor-button" onClick={clearFactors}>
+                Clear All Factors
+              </button>
+            </div>
+            <button className="game-button" onClick={startGame}>
+              Start the Game!
             </button>
-            <button className="factor-button" onClick={chooseAllButOne}>
-              Choose All Factors But 1
-            </button>
-            <button className="factor-button" onClick={clearFactors}>
-              Clear All Factors
-            </button>
+            <div className="matching-board">game not started</div>
           </div>
-          <button className="game-button" onClick={startGame}>
-            Start the Game!
-          </button>
-          <div className="matching-board">game not started</div>
         </div>
-              </div>
       );
     }
   }
-
 
   return (
     <div className="game-skeleton">
@@ -122,10 +132,7 @@ const Multiplication = function () {
       </p>
       {createBoard()}
       <Link to="/">
-        <button className="game-button">
-          
-        Pick a different game!
-        </button>
+        <button className="game-button">Pick a different game!</button>
       </Link>
     </div>
   );

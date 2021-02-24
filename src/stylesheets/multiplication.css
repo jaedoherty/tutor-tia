@@ -56,11 +56,18 @@
     border-radius: 8px;
     height: 30px;
     width:200px;
-
 }
 
-.factor-button-container {
+.factor-button:hover {
+    background-color: mediumblue;
+}
+
+#factor-button-container {
     display: flex;
     justify-content: space-evenly;
+}
+
+#game-board{
+    display: grid;
 }
 
