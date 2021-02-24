@@ -6,26 +6,49 @@ const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
-  let [factors, setFactors] = useState({checked: false, nums: []});
+  let [factors, setFactors] = useState([]);
   console.log(factors)
   function startGame() {
     setPlaying(true);
   }
 
   function chooseAllFactors() {
-    if (factors.checked === true) {
-      setFactors({nums: [], checked: false})
-    } else {
-      setFactors({nums: FACTORS, checked: true})
+    // if (factors.checked === true) {
+    //   setFactors({nums: [], checked: false})
+    // } else {
+      setFactors(FACTORS)
     }
-  }
+  // }
   function chooseAllButOne() {
-    if (factors.checked === true) {
-      setFactors({ nums: [], checked: false });
-    } else {
+    // if (factors.checked === true) {
+    //   setFactors({ nums: [], checked: false });
+    // } else {
       let newFactors = FACTORS.slice(1)
-      setFactors({nums: newFactors, checked: true})
-    }
+      setFactors(newFactors)
+  //   }
+  }
+
+  function clearFactors() {
+   setFactors([]); 
+  }
+
+  function chooseAFactor(factor) {
+    return () => {
+
+
+      console.log("choose a factor", factor)
+      // let allFactors = factors;
+      if (Object.values(factors).includes(factor)) {
+        let idx = Object.values(factors).indexOf(factor);
+        let newFactors = Object.values(factors).splice(idx)
+        console.log("new", newFactors, idx)
+        setFactors(newFactors)
+      } else {
+        let newFactors = Object.values(factors);
+        newFactors.push(factor);
+        setFactors(newFactors)
+      }
+  }
   }
 
 
@@ -53,9 +76,9 @@ const Multiplication = function () {
                          id={`factor${factor}`}
                          name={`factor${factor}`}
                         //  checked={true}
-                        //  onChange={chooseFactors(factor)}
+                         onChange={chooseAFactor(factor)}
                        />
-                       <label for={`factor${factor}`}>{factor}</label>
+                       <label for={`factor${factor}`} key={`${factor}label`}>{factor}</label>
                        <br></br>
                      </div>
                    );
@@ -64,6 +87,7 @@ const Multiplication = function () {
  
                <button className="factor-button" onClick={chooseAllFactors}>Choose All Factors</button>
                <button className="factor-button" onClick={chooseAllButOne}>Choose All Factors But 1</button>
+               <button className="factor-button" onClick={clearFactors}>Clear All Factors</button>
 
           </div>
           <button className="game-button" onClick={startGame}>
