@@ -23,6 +23,7 @@ const Multiplication = function () {
 
   function chooseAllButOne() {
     var checkboxes = document.getElementsByClassName("factor-box");
+    checkboxes[0].checked = false;
     for (let i = 1; i < checkboxes.length; i++) {
       checkboxes[i].checked = true;
     }
@@ -89,6 +90,7 @@ const Multiplication = function () {
                 );
               })}
             </div>
+              <div id="factor-button-container">
 
             <button className="factor-button" onClick={chooseAllFactors}>
               Choose All Factors
@@ -105,23 +107,11 @@ const Multiplication = function () {
           </button>
           <div className="matching-board">game not started</div>
         </div>
+              </div>
       );
     }
   }
 
-  // function chooseFactors(factor) {
-  //   let factorEl = document.getElementById(`factor${factor}`);
-  //   console.log(factorEl);
-  //   if (factorEl.checked === true) {
-  //     let newFactors = factors;
-  //     newFactors.push(factor);
-  //     setFactors(newFactors);
-  //   } else {
-  //     let idx = factors.indexOf(factor);
-  //     let newFactors = factors.splice(idx, 1);
-  //     setFactors(newFactors);
-  //   }
-  // }
 
   return (
     <div className="game-skeleton">
@@ -131,9 +121,11 @@ const Multiplication = function () {
         Remove them all to see an image at the end!
       </p>
       {createBoard()}
-      {/* <canvas id="multiplication" height="690" width="990"></canvas> */}
-      <Link to="/" className="game-button">
+      <Link to="/">
+        <button className="game-button">
+          
         Pick a different game!
+        </button>
       </Link>
     </div>
   );

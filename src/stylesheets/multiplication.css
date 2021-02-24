@@ -29,6 +29,9 @@
     height: 50px;
     width: 150px;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -44,8 +47,20 @@
 
 
 #factors-container {
-    /* display: flex; */
-    /* justify-content: space-evenly; */
+
     color:  whitesmoke;
+}
+
+.factor-button {
+    background-color: darkblue;
+    border-radius: 8px;
+    height: 30px;
+    width:200px;
+
+}
+
+.factor-button-container {
+    display: flex;
+    justify-content: space-evenly;
 }
 
