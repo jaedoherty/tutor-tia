@@ -7,6 +7,7 @@ const LongDivision = function() {
             <h1>Long Division</h1>
             <Link to ="/">Pick a different game!</Link>
         </div>
+
     )
 }
 
