@@ -2,6 +2,7 @@
 import './App.css';
 import './stylesheets/home_page.css'
 import './stylesheets/multiplication.css'
+import './stylesheets/division.css'
 import React from 'react'
 import { Switch, Route } from "react-router-dom";
 import Homepage from './components/home_page' 
