@@ -9,6 +9,7 @@ import Homepage from './components/home_page'
 import Multiplication from './components/multiplication'
 import Division from './components/divison'
 import LongDivision from './components/long_division'
+import Strike from './components/strike'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route exact path="/multiply" component={Multiplication}/>
         <Route exact path="/divide" component={Division}/>
+        <Route exact path="/strike" component={Strike}/>
         <Route exact path="/longdivision" component={LongDivision}/>
         <Route path="/" component={Homepage} />
       </Switch>
