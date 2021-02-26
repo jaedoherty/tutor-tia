@@ -63,7 +63,7 @@ const Multiplication = function () {
       return (
         <div className="game-container">
           {/* <div className="matching-board">board placeholder</div> */}
-          <div id="game-board">
+          <div className="matching-board">
             {
               // console.log(factors)
 
