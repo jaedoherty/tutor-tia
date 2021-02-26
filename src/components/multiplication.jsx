@@ -6,7 +6,7 @@ const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
-  let [factors, setFactors] = useState([]);
+  let [factors, setFactors] = useState(FACTORS);
   console.log(factors);
   function startGame() {
     setPlaying(true);
@@ -62,14 +62,12 @@ const Multiplication = function () {
     if (playing === true) {
       return (
         <div className="game-container">
-          {/* <div className="matching-board">board placeholder</div> */}
           <div className="matching-board">
             {
-              // console.log(factors)
 
               Object.values(factors).map((factor) => {
                 return(
-                  <div id="game-tile">{factor}</div>
+                  <div className="tile">{factor}</div>
                 )
               } 
               )

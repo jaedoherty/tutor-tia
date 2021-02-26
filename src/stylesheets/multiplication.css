@@ -20,7 +20,9 @@
 .matching-board {
     border: 1px white solid;
     height: 600px;
-    width: 900px;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .game-button {

@@ -45,7 +45,8 @@ const Homepage = function () {
             </div>
           </div>
         </Link>
-        <Link className="game-link">
+        <Link to="/strike" 
+        className="game-link">
           <div className="game-tile">
             <div className="game-title">Strike It Out</div>
             <div className="game-description">
