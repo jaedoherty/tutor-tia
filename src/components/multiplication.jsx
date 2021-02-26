@@ -113,7 +113,7 @@ const Multiplication = function () {
                 Clear All Factors
               </button>
             </div>
-            <button className="game-button" onClick={startGame}>
+            <button id= "start-game"className="game-button" onClick={startGame}>
               Start the Game!
             </button>
             <div className="matching-board">game not started</div>

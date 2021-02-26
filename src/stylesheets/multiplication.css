@@ -41,6 +41,7 @@
 }
 
 #choose-factors {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -49,6 +50,9 @@
 #factors-container {
 
     color:  whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .factor-button {
@@ -63,11 +67,18 @@
 }
 
 #factor-button-container {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
 
 #game-board{
     display: grid;
+}
+
+#start-game {
+    /* position: absolute;
+    left: 46%; */
+    margin: 10px 0px;
 }
 
