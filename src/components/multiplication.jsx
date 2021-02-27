@@ -1,4 +1,5 @@
 import React from "react";
+import Tile from "./tile";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,8 +7,8 @@ const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
-  let [factors, setFactors] = useState(FACTORS);
-  console.log(factors);
+  let [factors, setFactors] = useState(FACTORS.slice(1));
+  // console.log(factors);
   function startGame() {
     setPlaying(true);
   }
@@ -37,13 +38,13 @@ const Multiplication = function () {
     for (let i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = false;
     }
-    console.log("all", checkboxes);
+    // console.log("all", checkboxes);
     setFactors([]);
   }
 
   function chooseAFactor(factor) {
     return () => {
-      console.log("choose a factor", factor);
+      // console.log("choose a factor", factor);
       if (Object.values(factors).includes(factor)) {
         let idx = Object.values(factors).indexOf(factor);
         let newFactors = Object.values(factors);
@@ -58,21 +59,34 @@ const Multiplication = function () {
     };
   }
 
+  function populateBoard(size) {
+    let count = 0;
+    let tiles = [];
+
+    let solutions = {};
+
+
+    while (tiles.length < size) {
+      let factor1 = Math.ceil(Math.random() * Math.max(...factors))
+      let factor2 = Math.ceil(Math.random() * Math.max(...factors))
+      let equation = `${factor1} x ${factor2}`; 
+      let product = `${factor1 * factor2}`
+      solutions[equation] = product;
+      tiles.push(<Tile input={equation}/>);
+      tiles.push(<Tile input={product}/>);
+    }
+    let shuffled = tiles
+      .map((a) => ({ sort: Math.random(), value: a }))
+      .sort((a, b) => a.sort - b.sort)
+      .map((a) => a.value);
+    return shuffled;
+  }
+
   function createBoard() {
     if (playing === true) {
       return (
         <div className="game-container">
-          <div className="matching-board">
-            {
-
-              Object.values(factors).map((factor) => {
-                return(
-                  <div className="tile">{factor}</div>
-                )
-              } 
-              )
-            }
-          </div>
+          <div className="matching-board">{populateBoard(18)}</div>
         </div>
       );
     } else {
@@ -111,7 +125,7 @@ const Multiplication = function () {
                 Clear All Factors
               </button>
             </div>
-            <button id= "start-game"className="game-button" onClick={startGame}>
+            <button id="start-game" className="game-button" onClick={startGame}>
               Start the Game!
             </button>
             <div className="matching-board">game not started</div>
