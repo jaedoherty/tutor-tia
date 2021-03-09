@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Tile = function({input}) {
+const Tile = function({input, onClick, id}) {
+
     return (
-        <div className="tile" >
-            {/* <h1>game tile</h1>  */}
+        <button className="tile" key={input} id={id} onClick={onClick}>
             <div className="input">{input}</div>
-        </div>
+        </button>
        
     )
 }

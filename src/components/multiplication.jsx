@@ -8,7 +8,7 @@ const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
   let [factors, setFactors] = useState(FACTORS.slice(1));
-  // console.log(factors);
+  // let [selected, setSelecte] = useState({})
   function startGame() {
     setPlaying(true);
   }
@@ -38,13 +38,11 @@ const Multiplication = function () {
     for (let i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = false;
     }
-    // console.log("all", checkboxes);
     setFactors([]);
   }
 
   function chooseAFactor(factor) {
     return () => {
-      // console.log("choose a factor", factor);
       if (Object.values(factors).includes(factor)) {
         let idx = Object.values(factors).indexOf(factor);
         let newFactors = Object.values(factors);
@@ -65,15 +63,14 @@ const Multiplication = function () {
 
     let solutions = {};
 
-
     while (tiles.length < size) {
-      let factor1 = Math.ceil(Math.random() * Math.max(...factors))
-      let factor2 = Math.ceil(Math.random() * Math.max(...factors))
-      let equation = `${factor1} x ${factor2}`; 
-      let product = `${factor1 * factor2}`
+      let factor1 = Math.ceil(Math.random() * Math.max(...factors));
+      let factor2 = Math.ceil(Math.random() * Math.max(...factors));
+      let equation = `${factor1} x ${factor2}`;
+      let product = `${factor1 * factor2}`;
       solutions[equation] = product;
-      tiles.push(<Tile input={equation}/>);
-      tiles.push(<Tile input={product}/>);
+      tiles.push(<Tile input={equation} onClick={handleClick(equation)} id={equation} />);
+      tiles.push(<Tile input={product} onClick={handleClick(product)}  id={product}/>);
     }
     let shuffled = tiles
       .map((a) => ({ sort: Math.random(), value: a }))
@@ -81,6 +78,12 @@ const Multiplication = function () {
       .map((a) => a.value);
     return shuffled;
   }
+
+  const handleClick = function(input) {
+    let ele = document.getElementById(input);
+    debugger
+      console.log(ele) 
+  };
 
   function createBoard() {
     if (playing === true) {
@@ -105,6 +108,7 @@ const Multiplication = function () {
                       id={`factor${factor}`}
                       name={`factor${factor}`}
                       onChange={chooseAFactor(factor)}
+                    
                     />
                     <label for={`factor${factor}`} key={`${factor}label`}>
                       {factor}
