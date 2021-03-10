@@ -1,0 +1,13 @@
+#strike-game {
+    display: grid;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#strike-canvas{
+   background-color: salmon;
+   width: 100%;
+   height: 60%;
+}

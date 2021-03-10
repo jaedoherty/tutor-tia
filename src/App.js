@@ -4,6 +4,7 @@ import './stylesheets/home_page.css'
 import './stylesheets/multiplication.css'
 import './stylesheets/division.css'
 import './stylesheets/tile.css'
+import './stylesheets/strike.css'
 import React from 'react'
 import { Switch, Route } from "react-router-dom";
 import Homepage from './components/home_page' 

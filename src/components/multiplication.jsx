@@ -1,5 +1,4 @@
 import React from "react";
-import Tile from "./tile";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,6 @@ const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
   let [factors, setFactors] = useState(FACTORS.slice(1));
   let [pairs, setPairs] = useState([])
-  let [solution, setSolution] = useState({})
   function startGame() {
     setPlaying(true);
   }
@@ -86,7 +84,7 @@ const Multiplication = function () {
     .map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
     .map((a) => a.value);
-    console.log(shuffled)
+    console.log("shuffled", shuffled)
     return shuffled;
   }
 
@@ -94,10 +92,9 @@ const Multiplication = function () {
     let ele = document.getElementById(e.target.id);
     console.log("ele: ", ele, "id: ", e.target.id)
 
+    ele.style.backgroundColor = "blue"
+
     if (pairs.length === 0) {
-
-      ele.style.backgroundColor = "blue"
-
       setPairs([e.target.id])
     } else {
       console.log("sol", e.target.id)
