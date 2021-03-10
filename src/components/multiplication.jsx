@@ -8,7 +8,8 @@ const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
   let [factors, setFactors] = useState(FACTORS.slice(1));
-  // let [selected, setSelecte] = useState({})
+  let [pairs, setPairs] = useState([])
+  let [solution, setSolution] = useState({})
   function startGame() {
     setPlaying(true);
   }
@@ -47,7 +48,7 @@ const Multiplication = function () {
         let idx = Object.values(factors).indexOf(factor);
         let newFactors = Object.values(factors);
         newFactors.splice(idx);
-        console.log("new", newFactors, idx);
+        // console.log("new", newFactors, idx);
         setFactors(newFactors);
       } else {
         let newFactors = Object.values(factors);
@@ -69,20 +70,38 @@ const Multiplication = function () {
       let equation = `${factor1} x ${factor2}`;
       let product = `${factor1 * factor2}`;
       solutions[equation] = product;
-      tiles.push(<Tile input={equation} onClick={handleClick(equation)} id={equation} />);
-      tiles.push(<Tile input={product} onClick={handleClick(product)}  id={product}/>);
+      tiles.push(
+        <button className="tile" key={equation} id={equation} onClick={handleClick}>
+          <div className="input">{equation}</div>
+        </button>
+      );
+      tiles.push(
+        <button className="tile" key={product} onClick={handleClick}>
+          <div className="input">{product}</div>
+        </button>
+      );
     }
+
     let shuffled = tiles
-      .map((a) => ({ sort: Math.random(), value: a }))
-      .sort((a, b) => a.sort - b.sort)
-      .map((a) => a.value);
+    .map((a) => ({ sort: Math.random(), value: a }))
+    .sort((a, b) => a.sort - b.sort)
+    .map((a) => a.value);
     return shuffled;
   }
 
-  const handleClick = function(input) {
-    let ele = document.getElementById(input);
-    debugger
-      console.log(ele) 
+  const handleClick = function(e) {
+    let ele = document.getElementById(e.target.id);
+    console.log("ele: ", ele, "id: ", e.target.id)
+
+    if (pairs.length === 0) {
+
+      ele.style.backgroundColor = "blue"
+
+      setPairs([e.target.id])
+    } else {
+      console.log("sol", e.target.id)
+    }
+      console.log("pairs", pairs)
   };
 
   function createBoard() {

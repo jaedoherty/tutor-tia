@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Tile = function({input, onClick, id}) {
+const Tile = function({input}) {
 
     return (
-        <button className="tile" key={input} id={id} onClick={onClick}>
+        <button className="tile" key={input}>
             <div className="input">{input}</div>
         </button>
        
