@@ -76,7 +76,7 @@ const Multiplication = function () {
         </button>
       );
       tiles.push(
-        <button className="tile" key={product} onClick={handleClick}>
+        <button className="tile" key={product} id={product} onClick={handleClick}>
           <div className="input">{product}</div>
         </button>
       );
@@ -86,6 +86,7 @@ const Multiplication = function () {
     .map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
     .map((a) => a.value);
+    console.log(shuffled)
     return shuffled;
   }
 
