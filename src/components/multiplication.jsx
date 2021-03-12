@@ -7,9 +7,11 @@ const FACTORS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const Multiplication = function () {
   let [playing, setPlaying] = useState(false);
   let [factors, setFactors] = useState(FACTORS.slice(1));
-  let [pairs, setPairs] = useState([])
+  let [pairs, setPairs] = useState([]);
+  let [board, setBoard] = useState([])
   function startGame() {
     setPlaying(true);
+    populateBoard(18)
   }
 
   function chooseAllFactors() {
@@ -85,7 +87,7 @@ const Multiplication = function () {
     .sort((a, b) => a.sort - b.sort)
     .map((a) => a.value);
     console.log("shuffled", shuffled)
-    return shuffled;
+    setBoard({board: shuffled})
   }
 
   const handleClick = function(e) {
@@ -104,9 +106,17 @@ const Multiplication = function () {
 
   function createBoard() {
     if (playing === true) {
+      // const board = populateBoard(18)
+      // console.log("in create board function", board)
+      console.log("board", Object.values(board), typeof Object.values(board))
       return (
         <div className="game-container">
-          <div className="matching-board">{populateBoard(18)}</div>
+          {Object.values(board).map(tile => {
+            return (
+              <div className="matching-board">{tile}</div>
+
+            )
+          })}
         </div>
       );
     } else {
