@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Strike = function () {
   const [canvas, setCanvas] = useState("")
-    useEffect(() => {setCanvas({canvas: document.getElementById("strike-canvas")})
+    // useEffect(() => {setCanvas({canvas: document.getElementById("strike-canvas")})
     if (canvas = "") {
       return null
     } else {
