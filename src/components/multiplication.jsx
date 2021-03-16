@@ -62,14 +62,14 @@ const Multiplication = function () {
     let count = 0;
     let tiles = [];
 
-    let solutions = {};
+    // let solutions = {};
 
     while (tiles.length < size) {
       let factor1 = Math.ceil(Math.random() * Math.max(...factors));
       let factor2 = Math.ceil(Math.random() * Math.max(...factors));
       let equation = `${factor1} x ${factor2}`;
       let product = `${factor1 * factor2}`;
-      solutions[equation] = product;
+      // solutions[equation] = product;
       tiles.push(
         <button className="tile" key={equation} id={equation} onClick={handleClick}>
           <div className="input">{equation}</div>
@@ -86,7 +86,6 @@ const Multiplication = function () {
     .map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
     .map((a) => a.value);
-    console.log("shuffled", shuffled)
     setBoard({board: shuffled})
   }
 
@@ -106,9 +105,6 @@ const Multiplication = function () {
 
   function createBoard() {
     if (playing === true) {
-      // const board = populateBoard(18)
-      // console.log("in create board function", board)
-      console.log("board", Object.values(board), typeof Object.values(board))
       return (
         <div className="game-container">
           {Object.values(board).map(tile => {
@@ -159,7 +155,7 @@ const Multiplication = function () {
             <button id="start-game" className="game-button" onClick={startGame}>
               Start the Game!
             </button>
-            <div className="matching-board">game not started</div>
+            <div className="matching-board"></div>
           </div>
         </div>
       );
