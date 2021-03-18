@@ -85,18 +85,20 @@ const Multiplication = function () {
   }
 
   const handleClick = function(e) {
+  
     let ele = document.getElementById(e.target.id);
-    console.log("ele: ", ele, "id: ", e.target.id)
-
+    // let arr = pairs;
     ele.style.backgroundColor = "blue"
 
-    if (pairs.length === 0) {
-      setPairs([e.target.id])
+    if (arr.length === 0) {
+      console.log("target", e.target.id)
+      setPairs([e.target.id]) 
     } else {
-      console.log("sol", e.target.id)
+      console.log("sol", e.target.id, "else pair", pairs)
     }
-      console.log("pairs", pairs)
   };
+
+
 
   function createBoard() {
     if (playing === true) {
