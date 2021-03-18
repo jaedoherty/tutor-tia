@@ -48,7 +48,6 @@ const Multiplication = function () {
         let idx = Object.values(factors).indexOf(factor);
         let newFactors = Object.values(factors);
         newFactors.splice(idx);
-        // console.log("new", newFactors, idx);
         setFactors(newFactors);
       } else {
         let newFactors = Object.values(factors);
@@ -61,15 +60,11 @@ const Multiplication = function () {
   function populateBoard(size) {
     let count = 0;
     let tiles = [];
-
-    // let solutions = {};
-
     while (tiles.length < size) {
       let factor1 = Math.ceil(Math.random() * Math.max(...factors));
       let factor2 = Math.ceil(Math.random() * Math.max(...factors));
       let equation = `${factor1} x ${factor2}`;
       let product = `${factor1 * factor2}`;
-      // solutions[equation] = product;
       tiles.push(
         <button className="tile" key={equation} id={equation} onClick={handleClick}>
           <div className="input">{equation}</div>
