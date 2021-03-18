@@ -30,7 +30,7 @@ const Strike = function () {
   
 
   }
-    )
-}
+//     )
+// }
 
 export default Strike;
